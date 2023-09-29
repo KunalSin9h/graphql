@@ -1,12 +1,13 @@
 import { JSONFile } from "lowdb/node";
 import { Low } from "lowdb";
+import { nanoid } from "nanoid";
 
-type User = {
+export type User = {
   id: string;
   username: String;
 };
 
-type Pet = {
+export type Pet = {
   id: string;
   createdAt: string;
   name: string;

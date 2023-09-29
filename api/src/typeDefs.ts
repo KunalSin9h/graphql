@@ -7,14 +7,26 @@ const typeDefs = gql`
   }
 
   type Pet {
-    id: ID!
+    id: String!
     createdAt: String!
     name: String!
+    type: String!
+    img: String!
+  }
+
+  type Pet {
+    id: String!
+    createdAt: String!
+    name(up: Boolean): String!
+    type: String!
+    img: String!
+  }
+  input PetInput {
     type: String!
   }
 
   type Query {
-    pets: [Pet]!
+    pets(input: PetInput): [Pet]!
   }
 `;
 
