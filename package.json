@@ -14,6 +14,8 @@
   "dependencies": {
     "@apollo/server": "^4.9.3",
     "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "lowdb": "^6.0.1",
+    "nanoid": "^5.0.1"
   }
 }

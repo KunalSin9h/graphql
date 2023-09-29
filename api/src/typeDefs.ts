@@ -2,20 +2,19 @@ import gql from "graphql-tag";
 
 const typeDefs = gql`
   type User {
-    id: String!
+    id: ID!
     username: String!
   }
 
   type Pet {
-    id: String!
-    createdAt: Int!
+    id: ID!
+    createdAt: String!
     name: String!
     type: String!
   }
 
   type Query {
-    user: User!
-    pet: Pet!
+    pets: [Pet]!
   }
 `;
 
