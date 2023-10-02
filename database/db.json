@@ -1,0 +1,67 @@
+{
+  "user": {
+    "id": "KCRV5hJYLwyAZMVG9q5XP",
+    "username": "kunalsin9h"
+  },
+  "dogs": [
+    {
+      "legs": 4,
+      "age": 2,
+      "bhow": true
+    },
+    {
+      "legs": 4,
+      "age": 2,
+      "bhow": true
+    }
+  ],
+  "cats": [
+    {
+      "legs": 4,
+      "age": 1,
+      "meow": true
+    },
+    {
+      "legs": 4,
+      "age": 1,
+      "meow": true
+    }
+  ],
+  "pets": [
+    {
+      "id": "e65NMz7ZSZDMcER2FSN3U",
+      "name": "A",
+      "type": "CAT",
+      "createdAt": "1.0",
+      "img": "img_1.png"
+    },
+    {
+      "id": "KYnSV4ILl-AIg7NfQag4K",
+      "name": "B",
+      "type": "CAT",
+      "createdAt": "2.0",
+      "img": "img_2.png"
+    },
+    {
+      "id": "eGCOpbxy0wNjTe-Fy1g6a",
+      "name": "C",
+      "type": "CAT",
+      "createdAt": "3.0",
+      "img": "img_3.png"
+    },
+    {
+      "id": "mmqkacbMHy-KH9w74z0h0",
+      "name": "D",
+      "type": "DOG",
+      "createdAt": "4.0",
+      "img": "img_4.png"
+    },
+    {
+      "id": "WjJpSrmpwDmWRN9tV_xAj",
+      "name": "E",
+      "type": "DOG",
+      "createdAt": "5.0",
+      "img": "img_5.png"
+    }
+  ]
+}
