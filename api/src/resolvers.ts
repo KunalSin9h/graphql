@@ -5,11 +5,11 @@ import { nanoid } from "nanoid";
 const resolvers = {
   Query: {
     // @ts-ignore
-    animals(_: unknown, { input }, { db }: { db: Low<Data> }) {
+    animals: (_: unknown, { input }, { db }: { db: Low<Data> }) => {
       return [...db.data.dogs, ...db.data.cats];
     },
     // @ts-ignore
-    pets(_: unknown, { input }, { db }: { db: Low<Data> }) {
+    pets: (_: unknown, { input }, { db }: { db: Low<Data> }) => {
       let pets = db.data.pets;
       if (input === undefined) return pets;
 
@@ -24,7 +24,7 @@ const resolvers = {
       return res;
     },
     // @ts-ignore
-    pet(_, { input }, { db }) {
+    pet: (_, { input }, { db }) => {
       let pets = db.data.pets;
 
       if (input === undefined || input === null) {
@@ -42,7 +42,7 @@ const resolvers = {
   },
   Mutation: {
     // @ts-ignore
-    addPet(_, { input }, { db }: { db: Low<Data> }) {
+    addPet: (_, { input }, { db }: { db: Low<Data> }) => {
       let name = input.name;
       let type = input.type;
       let img = input.img;
@@ -62,7 +62,7 @@ const resolvers = {
       return newPet;
     },
     // @ts-ignore
-    removePet(_, { input }, { db }: { db: Low<Data> }) {
+    removePet: (_, { input }, { db }: { db: Low<Data> }) => {
       let id = input.id;
 
       let pet: Pet | undefined = undefined;
@@ -84,7 +84,7 @@ const resolvers = {
       }
     },
     // @ts-ignore
-    removeAllPets(_, { input }, { db }: { db: Low<Data> }) {
+    removeAllPets: (_, { input }, { db }: { db: Low<Data> }) => {
       let allPets = db.data.pets;
       db.data.pets = [];
       db.write();
@@ -94,7 +94,7 @@ const resolvers = {
 
   Animal: {
     // @ts-ignore
-    __resolveType(animal) {
+    __resolveType: (animal) => {
       if (animal.meow) return "Cat";
       return "Dog";
     },
