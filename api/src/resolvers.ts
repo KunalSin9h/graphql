@@ -1,13 +1,9 @@
 import { Low } from "lowdb";
-import { Data, type Pet } from "./db";
+import db, { Data, User, type Pet } from "./db";
 import { nanoid } from "nanoid";
 
 const resolvers = {
   Query: {
-    // @ts-ignore
-    animals: (_: unknown, { input }, { db }: { db: Low<Data> }) => {
-      return [...db.data.dogs, ...db.data.cats];
-    },
     // @ts-ignore
     pets: (_: unknown, { input }, { db }: { db: Low<Data> }) => {
       let pets = db.data.pets;
@@ -46,6 +42,7 @@ const resolvers = {
       let name = input.name;
       let type = input.type;
       let img = input.img;
+      let user_id = input.user_id;
 
       let newPet: Pet = {
         id: nanoid(),
@@ -53,6 +50,7 @@ const resolvers = {
         type,
         img,
         createdAt: Date.now().toString(),
+        user: user_id,
       };
 
       db.data.pets.push(newPet);
@@ -91,12 +89,29 @@ const resolvers = {
       return allPets;
     },
   },
-
   Animal: {
     // @ts-ignore
     __resolveType: (animal) => {
       if (animal.meow) return "Cat";
       return "Dog";
+    },
+  },
+  Pet: {
+    user: (pet: Pet, _, { db }: { db: Low<Data> }) => {
+      for (let user of db.data.users) {
+        if (user.id === pet.user) {
+          return user;
+        }
+      }
+    },
+  },
+  User: {
+    pets(user: User, _, { db }: { db: Low<Data> }) {
+      let pets = db.data.pets.filter((pet: Pet) => {
+        if (user.pets.includes(pet.id)) return true;
+        return false;
+      });
+      return pets;
     },
   },
 };

@@ -1,0 +1,17 @@
+input PetsInput {
+  type: PetTypes!
+}
+
+input SinglePetInput {
+  id: String!
+}
+
+input AddPetInput {
+  name: String!
+  type: PetTypes!
+  img: String!
+}
+
+input RemovePetInput {
+  id: String!
+}

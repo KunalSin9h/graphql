@@ -1,6 +1,7 @@
 type User {
   id: ID!
   username: String!
+  pets: [Pet]!
 }
 
 interface Animal {
@@ -31,22 +32,5 @@ type Pet {
   name(up: Boolean): String!
   type: PetTypes!
   img: String!
-}
-
-input PetsInput {
-  type: PetTypes!
-}
-
-input SinglePetInput {
-  id: String!
-}
-
-input AddPetInput {
-  name: String!
-  type: PetTypes!
-  img: String!
-}
-
-input RemovePetInput {
-  id: String!
+  user: User!
 }

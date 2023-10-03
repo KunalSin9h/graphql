@@ -15,9 +15,13 @@ const { url } = await startStandaloneServer(server, {
   listen: {
     port: 3033,
   },
-  context: async () => ({
-    db,
-  }),
+  context: async ({ req }) => {
+    // use req.headers.authentication to get auth tokens and
+    // allow only authenticated users
+    return {
+      db,
+    };
+  },
 });
 
 console.log(`Started server at ${url}`);

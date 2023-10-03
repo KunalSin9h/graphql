@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 export type User = {
   id: string;
   username: String;
+  pets: string[];
 };
 
 export type Pet = {
@@ -13,89 +14,34 @@ export type Pet = {
   name: string;
   type: string;
   img: String;
-};
-
-export type Dog = {
-  legs: number;
-  age: number;
-  bhow: boolean;
-};
-export type Cat = {
-  legs: number;
-  age: number;
-  meow: boolean;
+  user: string;
 };
 
 export type Data = {
-  user: User;
+  users: User[];
   pets: Pet[];
-  dogs: Dog[];
-  cats: Cat[];
 };
 
+let user_1: User = {
+  id: nanoid(),
+  username: "A",
+  pets: [],
+};
+
+let pet_1: Pet = {
+  id: nanoid(),
+  createdAt: Date.now().toString(),
+  name: "pA",
+  type: "DOG",
+  img: "dog.png",
+  user: user_1.id,
+};
+
+user_1.pets.push(pet_1.id);
+
 export const defaultData: Data = {
-  user: { id: nanoid(), username: "kunalsin9h" },
-  dogs: [
-    {
-      legs: 4,
-      age: 2,
-      bhow: true,
-    },
-    {
-      legs: 4,
-      age: 2,
-      bhow: true,
-    },
-  ],
-  cats: [
-    {
-      legs: 4,
-      age: 1,
-      meow: true,
-    },
-    {
-      legs: 4,
-      age: 1,
-      meow: true,
-    },
-  ],
-  pets: [
-    {
-      id: nanoid(),
-      name: "A",
-      type: "CAT",
-      createdAt: "1.0",
-      img: "img_1.png",
-    },
-    {
-      id: nanoid(),
-      name: "B",
-      type: "CAT",
-      createdAt: "2.0",
-      img: "img_2.png",
-    },
-    {
-      id: nanoid(),
-      name: "C",
-      type: "CAT",
-      createdAt: "3.0",
-      img: "img_3.png",
-    },
-    {
-      id: nanoid(),
-      name: "D",
-      type: "DOG",
-      createdAt: "4.0",
-      img: "img_4.png",
-    },
-    {
-      id: nanoid(),
-      name: "E",
-      type: "DOG",
-      createdAt: "5.0",
-      img: "img_5.png",
-    },
-  ],
+  users: [user_1],
+  pets: [pet_1],
 };
 
 const adapter = new JSONFile<Data>("database/db.json");
