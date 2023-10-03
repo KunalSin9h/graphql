@@ -1,0 +1,52 @@
+type User {
+  id: ID!
+  username: String!
+}
+
+interface Animal {
+  legs: Int!
+  age: Int!
+}
+
+type Dog implements Animal {
+  legs: Int!
+  age: Int!
+  bhow: Boolean!
+}
+
+type Cat implements Animal {
+  legs: Int!
+  age: Int!
+  meow: Boolean!
+}
+
+enum PetTypes {
+  DOG
+  CAT
+}
+
+type Pet {
+  id: String!
+  createdAt: String!
+  name(up: Boolean): String!
+  type: PetTypes!
+  img: String!
+}
+
+input PetsInput {
+  type: PetTypes!
+}
+
+input SinglePetInput {
+  id: String!
+}
+
+input AddPetInput {
+  name: String!
+  type: PetTypes!
+  img: String!
+}
+
+input RemovePetInput {
+  id: String!
+}

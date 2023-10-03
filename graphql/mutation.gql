@@ -1,0 +1,5 @@
+type Mutation {
+  addPet(input: AddPetInput!): Pet!
+  removePet(input: RemovePetInput!): Pet!
+  removeAllPets: [Pet]!
+}

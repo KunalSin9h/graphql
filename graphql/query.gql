@@ -1,0 +1,5 @@
+type Query {
+  animals: [Animal]!
+  pets(input: PetsInput): [Pet]!
+  pet(input: SinglePetInput): Pet!
+}
